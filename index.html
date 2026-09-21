@@ -10,7 +10,7 @@
     <div id="app">
       <div class="container">
         <div class="row">
-          <div class="col-asm-12">
+          <div class="col-sm-12">
             <form id="form">
               <div class="mb-3 mt-3">
                 <label for="day" class="form-label">Day:</label>
@@ -20,13 +20,13 @@
                 <label for="temp" class="form-label">Temperature:</label>
                 <input type="number" class="form-control" id="temp" placeholder="Enter the temperature..." name="temp">
               </div>
-              <button type="submit" class="btn btn-primary">beküldés</button>
+              <button type="submit" class="btn btn-primary">Beküldés</button>
             </form>
           </div>
         </div>
         <div class="row">
           <div class="col-sm-12">
-            <table class="table table-bordered" id=" table">
+            <table class="table table-bordered" id="table">
                 <thead>
                   <tr>
                     <th>Day</th>
@@ -40,15 +40,13 @@
           </div>
         </div>
         <div class="row">
-          <div class="col-sm-12">
+          <div class="col-sm-12" id="expDiv">
             <div class="d-grid">
               <button class="btn btn-success" id="exportBtn">Exportálás</button>
             </div>
-          </div>
-        </div>
-        <div class="row">
-          <div class="col-sm-12">
-            <textarea id="export" hidden></textarea>         
+            <div class="col-sm-12">
+              <textarea id="export" hidden></textarea>         
+            </div>
           </div>
         </div>
       </div>

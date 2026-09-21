@@ -11,6 +11,14 @@
   margin-top: 10px;
 }
 
+#table {
+  text-align: center;
+}
+
+th {
+  background-color: rgba(167, 165, 165, 0.212) !important;
+}
+
 #form {
   margin: 10px 0px;
   background-color: rgba(243, 240, 240, 0.623);

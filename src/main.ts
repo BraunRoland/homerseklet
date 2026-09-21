@@ -21,7 +21,7 @@ function kiiras(item: Idojaras) {
     const day = document.createElement('td') as HTMLTableCellElement;
     const temp = document.createElement('td') as HTMLTableCellElement;
     day.innerText = item.day;
-    temp.innerText = item.temperature.toLocaleString();
+    temp.innerText = item.temperature.toLocaleString() + " °C";
     if (item.temperature >= 30) {
       temp.classList.add('piros');
       day.classList.add('piros');
