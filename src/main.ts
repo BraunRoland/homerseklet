@@ -15,9 +15,8 @@ async function adatBeolvasas() {
   }
 }
 
-function kiiras() {
+function kiiras(item: Idojaras) {
   const table = document.getElementById('kiiras') as HTMLTableElement;
-  idojarasok.forEach((item:Idojaras) => {
     const row = document.createElement('tr') as HTMLTableRowElement;
     const day = document.createElement('td') as HTMLTableCellElement;
     const temp = document.createElement('td') as HTMLTableCellElement;
@@ -29,18 +28,19 @@ function kiiras() {
     }
     else if(item.temperature < 10) {
       temp.classList.add('kek');
-      day.classList.add('kek')
+      day.classList.add('kek');
     } 
     row.appendChild(day);
     row.appendChild(temp);
     table.appendChild(row);
-  })
 }
 
 async function init() {
   idojarasok = [];
   await adatBeolvasas();
-  kiiras();
+  idojarasok.forEach((item: Idojaras) => {
+    kiiras(item);
+  })
   const day = document.getElementById('day') as HTMLInputElement;
   switch(new Date().getDay()) {
     case(0):
@@ -69,8 +69,15 @@ async function init() {
 }
 
 function ujAdat() {
-
+  const tempF = document.getElementById('temp') as HTMLInputElement;
+  const dayF = document.getElementById('day') as HTMLInputElement;
+  idojarasok.push({day: dayF.value, temperature: parseInt(tempF.value)});
+  kiiras(idojarasok[idojarasok.length-1]);
+  tempF.value = "";
 }
 
 document.addEventListener('DOMContentLoaded', init)
-document.getElementById('form')!.addEventListener('submit', ujAdat)
+document.getElementById('form')!.addEventListener('submit',e=> {
+  e.preventDefault();
+  ujAdat();
+})

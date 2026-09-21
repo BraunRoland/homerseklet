@@ -1,4 +1,4 @@
 export interface Idojaras {
     day: string,
-    temperature: number
+    temperature: number;
 }
