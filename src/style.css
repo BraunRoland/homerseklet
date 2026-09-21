@@ -5,3 +5,14 @@
 .kek {
   background-color: rgba(0, 255, 255, 0.541) !important;
 }
+
+#export {
+  width: 100%;
+}
+
+#form {
+  margin: 10px 0px;
+  background-color: rgba(243, 240, 240, 0.623);
+  padding: 5px;
+  border-radius: 3px;
+}

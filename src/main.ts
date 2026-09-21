@@ -38,33 +38,33 @@ function kiiras(item: Idojaras) {
 async function init() {
   idojarasok = [];
   await adatBeolvasas();
-  idojarasok.forEach((item: Idojaras) => {
-    kiiras(item);
-  })
   const day = document.getElementById('day') as HTMLInputElement;
   switch(new Date().getDay()) {
     case(0):
-      day.value = 'Sunday';
-      break;
+    day.value = 'Sunday';
+    break;
     case(1):
-      day.value = 'Monday';
-      break;
+    day.value = 'Monday';
+    break;
     case(2):
-      day.value = 'Tuesday';
-      break;
+    day.value = 'Tuesday';
+    break;
     case(3):
-      day.value = 'Wednesday';
-      break;
+    day.value = 'Wednesday';
+    break;
     case(4):
-      day.value = 'Thursday';
-      break;
+    day.value = 'Thursday';
+    break;
     case(5):
-      day.value = 'Friday';
-      break;    
+    day.value = 'Friday';
+    break;    
     case(6):
-      day.value = 'Saturday';
-      break;
+    day.value = 'Saturday';
+    break;
   }
+  idojarasok.forEach((item: Idojaras) => {
+    kiiras(item);
+  })
   console.log(idojarasok);
 }
 
@@ -76,8 +76,25 @@ function ujAdat() {
   tempF.value = "";
 }
 
-document.addEventListener('DOMContentLoaded', init)
+function toJSON(){
+  const kiiras = document.getElementById('export') as HTMLTextAreaElement;
+  kiiras.value = "";
+  let string  =``;
+  idojarasok.forEach((item: Idojaras) => {
+    string += `{ "day":"${item.day}", "temperature":${item.temperature} }, \n`;
+  });
+  kiiras.value = string;
+  kiiras.rows = idojarasok.length;
+  kiiras.hidden = false;
+}
+
 document.getElementById('form')!.addEventListener('submit',e=> {
   e.preventDefault();
   ujAdat();
+  const kiiras = document.getElementById('export') as HTMLTextAreaElement;
+  if (!kiiras.hidden) {
+    toJSON()
+  }
 })
+document.getElementById('exportBtn')!.addEventListener('click',toJSON);
+document.addEventListener('DOMContentLoaded', init)
