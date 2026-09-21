@@ -23,6 +23,14 @@ function kiiras() {
     const temp = document.createElement('td') as HTMLTableCellElement;
     day.innerText = item.day;
     temp.innerText = item.temperature.toLocaleString();
+    if (item.temperature >= 30) {
+      temp.classList.add('piros');
+      day.classList.add('piros');
+    }
+    else if(item.temperature < 10) {
+      temp.classList.add('kek');
+      day.classList.add('kek')
+    } 
     row.appendChild(day);
     row.appendChild(temp);
     table.appendChild(row);
@@ -33,7 +41,36 @@ async function init() {
   idojarasok = [];
   await adatBeolvasas();
   kiiras();
+  const day = document.getElementById('day') as HTMLInputElement;
+  switch(new Date().getDay()) {
+    case(0):
+      day.value = 'Sunday';
+      break;
+    case(1):
+      day.value = 'Monday';
+      break;
+    case(2):
+      day.value = 'Tuesday';
+      break;
+    case(3):
+      day.value = 'Wednesday';
+      break;
+    case(4):
+      day.value = 'Thursday';
+      break;
+    case(5):
+      day.value = 'Friday';
+      break;    
+    case(6):
+      day.value = 'Saturday';
+      break;
+  }
   console.log(idojarasok);
 }
 
+function ujAdat() {
+
+}
+
 document.addEventListener('DOMContentLoaded', init)
+document.getElementById('form')!.addEventListener('submit', ujAdat)
